@@ -32,4 +32,4 @@ Proje şu an aktif geliştirme aşamasındadır. Planlanan temel modüller şunl
 - [ ] Kategori, Banka ve Fatura/Gider modüllerinin (Tam kapsamlı CRUD) entegrasyonu.# FinancialCrmEnterprise
 
 
-** Not: Bu repo, geliştirme süreci boyunca düzenli commit'ler ile güncellenecektir.
+** Not: Bu repo, geliştirme süreci boyunca düzenli commit'ler ile güncellenecektir. **
