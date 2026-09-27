@@ -20,7 +20,7 @@ namespace FinancialCrm.UI
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-
+            Application.Exit();
         }
         // Kullanıcı adı ve şifre kontrolü
         private void btnGiris_Click(object sender, EventArgs e)
