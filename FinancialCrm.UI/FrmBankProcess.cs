@@ -8,17 +8,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace FinancialCrm.UI
 {
-    public partial class FrmDashboard : Form
+    public partial class FrmBankProcess : Form
     {
-        public FrmDashboard()
+        public FrmBankProcess()
         {
             InitializeComponent();
         }
 
-        private void FrmDashboard_Load(object sender, EventArgs e)
+        private void FrmBankProcess_Load(object sender, EventArgs e)
         {
+        }
+
+        private void btnBankProcessList_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnCreateBankProcess_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void BtnRemoveBankProcess_Click(object sender, EventArgs e)
+        {
+           
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -26,30 +42,14 @@ namespace FinancialCrm.UI
             Application.Exit();
         }
 
-        // Timer Kısmı
-        private void timer1_Tick(object sender, EventArgs e)
+        private void btnUpdateBankProcess_Click(object sender, EventArgs e)
         {
            
         }
-        
 
-        private void btnBankProcessForm_Click(object sender, EventArgs e)
+        private void frmDashboardForm_Click(object sender, EventArgs e)
         {
-            FrmBankProcess frm = new FrmBankProcess();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void btnCategoriesForm_Click(object sender, EventArgs e)
-        {
-            FrmCategories frm = new FrmCategories();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void frmBanksForm_Click(object sender, EventArgs e)
-        {
-            FrmBanks frm = new FrmBanks();
+            FrmDashboard frm = new FrmDashboard();
             frm.Show();
             this.Hide();
         }
@@ -61,9 +61,18 @@ namespace FinancialCrm.UI
             this.Hide();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnBanksForm_Click(object sender, EventArgs e)
         {
+            FrmBanks frm = new FrmBanks();
+            frm.Show();
+            this.Hide();
+        }
 
+        private void btnCategoriesForm_Click(object sender, EventArgs e)
+        {
+            FrmCategories frm = new FrmCategories();
+            frm.Show();
+            this.Hide();
         }
 
         private void btnSettings_Click(object sender, EventArgs e)

@@ -43,5 +43,11 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FinancialCrm.DataAccess\FinancialCrm.DataAccess.csproj">
+      <Project>{e5768118-6fb9-42b0-bbe1-4c19abefd76f}</Project>
+      <Name>FinancialCrm.DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
