@@ -42,7 +42,7 @@ namespace FinancialCrm.UI
 
                 if (response.IsSuccessStatusCode)
                 {
-                    // API'dan 200 döndüyse Dashboard (Ana Sayfa) formunu aç
+                    // API'dan 200 döndüyse Dashboard formunu aç
                     FrmDashboard frm = new FrmDashboard();
                     frm.Show();
                     this.Hide(); // Login formunu gizle
