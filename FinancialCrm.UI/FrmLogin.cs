@@ -42,14 +42,14 @@ namespace FinancialCrm.UI
 
                 if (response.IsSuccessStatusCode)
                 {
-                    // API'den 200 (OK) döndüyse Dashboard (Ana Sayfa) formunu aç
+                    // API'dan 200 döndüyse Dashboard (Ana Sayfa) formunu aç
                     FrmDashboard frm = new FrmDashboard();
                     frm.Show();
                     this.Hide(); // Login formunu gizle
                 }
                 else
                 {
-                    // API'den 401 (Unauthorized) döndüyse hata mesajı ver
+                    // API'den 401döndüyse hata mesajı verdiriyoruz
                     MessageBox.Show("Kullanıcı adı veya şifre hatalı!", "Giriş Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
