@@ -47,18 +47,59 @@ namespace FinancialCrm.UI
             }
         }
 
-        private void btnCreateCategory_Click(object sender, EventArgs e)
+        // KATEGORİ EKLEME BUTONU
+        private async void btnCreateCategory_Click(object sender, EventArgs e)
         {
+            var categoryName = txtCategoriesName.Text;
+
+            var json = JsonConvert.SerializeObject(new CategoryResultDto { CategoryName = categoryName });
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            using (var client = new HttpClient())
+            {
+                var response = await client.PostAsync("https://localhost:7126/api/Categories", content);
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Kategori başarıyla eklendi!");
+                    btnCategoryList_Click(sender, e); // Tabloyu yeniler
+                }
+            }
         }
 
-        private void BtnRemoveCategory_Click(object sender, EventArgs e)
+        // KATEGORİ SİLME BUTONU
+        private async void BtnRemoveCategory_Click(object sender, EventArgs e)
         {
-          
+            var id = txtCategoriesId.Text;
+
+            using (var client = new HttpClient())
+            {
+                var response = await client.DeleteAsync($"https://localhost:7126/api/Categories/{id}");
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Kategori başarıyla silindi!");
+                    btnCategoryList_Click(sender, e); // Tabloyu yeniler
+                }
+            }
         }
 
-        // Güncelleme Kısmı
-        private void btnUpdateCategory_Click(object sender, EventArgs e)
+        // KATEGORİ GÜNCELLEME BUTONU
+        private async void btnUpdateCategory_Click(object sender, EventArgs e)
         {
+            var id = Convert.ToInt32(txtCategoriesId.Text);
+            var categoryName = txtCategoriesName.Text;
+
+            var json = JsonConvert.SerializeObject(new CategoryResultDto { CategoryId = id, CategoryName = categoryName });
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            using (var client = new HttpClient())
+            {
+                var response = await client.PutAsync("https://localhost:7126/api/Categories", content);
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Kategori başarıyla güncellendi!");
+                    btnCategoryList_Click(sender, e); // Tabloyu yeniler
+                }
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
