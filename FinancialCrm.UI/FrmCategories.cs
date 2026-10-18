@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace FinancialCrm.UI
 {
@@ -17,14 +20,31 @@ namespace FinancialCrm.UI
             InitializeComponent();
         }
 
-        private void FrmCategories_Load(object sender, EventArgs e)
+        private async void FrmCategories_Load(object sender, EventArgs e)
         {
-          
+           
         }
 
-        private void btnCategoryList_Click(object sender, EventArgs e)
+
+        private async void btnCategoryList_Click(object sender, EventArgs e)
         {
-            
+            using (var client = new HttpClient())
+            {
+                // 1. API sunucumuza istek atıyoruz
+                var responseMessage = await client.GetAsync("https://localhost:7126/api/Categories");
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    // 2. Başarılı olursa gelen JSON verisini okuyoruz
+                    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+
+                    // 3. Metni C# Listesine çeviriyoruz (Entity katmanındaki Category sınıfını kullanarak)
+                    var values = JsonConvert.DeserializeObject<List<CategoryResultDto>>(jsonData);
+
+                    // 4. Tabloya (DataGridView) yazdırıyoruz
+                    dataGridView1.DataSource = values;
+                }
+            }
         }
 
         private void btnCreateCategory_Click(object sender, EventArgs e)
@@ -78,5 +98,12 @@ namespace FinancialCrm.UI
         {
 
         }
+    }
+
+    // Bu sınıf, API'den gelen JSON verisini arayüzde karşılamak için oluşturduğumuz bir kalıptır.
+    public class CategoryResultDto
+    {
+        public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
     }
 }

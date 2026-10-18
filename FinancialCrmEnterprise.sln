@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseScripts", "Database
 		FinancialCrmDb_Yedek.sql = FinancialCrmDb_Yedek.sql
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialCrm.WebApi", "FinancialCrm.WebApi\FinancialCrm.WebApi.csproj", "{0F2693AF-A356-4746-B3B3-C69B9D062D73}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{D4615A4F-1434-46DB-8E1B-AE4689F0D707}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4615A4F-1434-46DB-8E1B-AE4689F0D707}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4615A4F-1434-46DB-8E1B-AE4689F0D707}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F2693AF-A356-4746-B3B3-C69B9D062D73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F2693AF-A356-4746-B3B3-C69B9D062D73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F2693AF-A356-4746-B3B3-C69B9D062D73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F2693AF-A356-4746-B3B3-C69B9D062D73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
