@@ -35,7 +35,7 @@ namespace FinancialCrm.UI
             Application.Exit();
         }
 
-        // Timer Kısmı
+        // Timer Kısmı ve api'dan veri çekme kısmı 
         private async void timer1_Tick(object sender, EventArgs e)
         {
             using (var client = new HttpClient())
