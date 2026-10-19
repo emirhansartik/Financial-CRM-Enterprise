@@ -1,6 +1,8 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
+using System.Net.Http;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace FinancialCrm.UI
 {
@@ -49,5 +51,21 @@ namespace FinancialCrm.UI
             frm.Show();
             this.Hide();
     }
+    }
+    // API'den gelen JSON paketini karşılayacak DTO Kalıpları
+    public class BanksDashboardDto
+    {
+        public decimal ZiraatBalance { get; set; }
+        public decimal VakifBalance { get; set; }
+        public decimal IsBankasiBalance { get; set; }
+        public List<BankProcessItemDto> Last5Processes { get; set; }
+    }
+
+    public class BankProcessItemDto
+    {
+        public string Description { get; set; }
+        public decimal Amount { get; set; }
+        public string ProcessType { get; set; }
+        public string ProcessDate { get; set; }
     }
 }
