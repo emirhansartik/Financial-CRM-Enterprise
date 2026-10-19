@@ -12,11 +12,33 @@ namespace FinancialCrm.UI
         {
             InitializeComponent();
         }
-        
 
-        private void FrmBanks_Load(object sender, EventArgs e)
+
+        private async void FrmBanks_Load(object sender, EventArgs e)
         {
-           
+            using (var client = new HttpClient())
+            {
+                var response = await client.GetAsync("https://localhost:7126/api/Banks");
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonData = await response.Content.ReadAsStringAsync();
+                    var data = JsonConvert.DeserializeObject<BanksDashboardDto>(jsonData);
+
+                    // 1. Üstteki 3 Banka Kartının Bakiyelerini Yazdırıyoruz
+                    lblZiraatBankBalance.Text = data.ZiraatBalance.ToString("C2");
+                    lblVakifbankBalance.Text = data.VakifBalance.ToString("C2");
+                    lblİsBankasiBalance.Text = data.IsBankasiBalance.ToString("C2");
+
+                    // 2. Son 5 Banka Hareketini Ekrana Basıyoruz
+                    Label[] processLabels = { lblBankProcess1, lblBankProcess2, lblBankProcess3, lblBankProcess4, lblBankProcess5 };
+
+                    for (int i = 0; i < data.Last5Processes.Count && i < processLabels.Length; i++)
+                    {
+                        var item = data.Last5Processes[i];
+                        processLabels[i].Text = $"{item.Description}  |  {item.ProcessDate}  |  {item.ProcessType}  |  {item.Amount:C2}";
+                    }
+                }
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
