@@ -174,7 +174,7 @@
             this.btnCategoriesForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCategoriesForm.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnCategoriesForm.ForeColor = System.Drawing.Color.White;
-            this.btnCategoriesForm.Location = new System.Drawing.Point(31, 56);
+            this.btnCategoriesForm.Location = new System.Drawing.Point(31, 45);
             this.btnCategoriesForm.Name = "btnCategoriesForm";
             this.btnCategoriesForm.Size = new System.Drawing.Size(178, 50);
             this.btnCategoriesForm.TabIndex = 0;
