@@ -74,7 +74,7 @@ namespace FinancialCrm.UI
             this.Hide();
     }
     }
-    // API'den gelen JSON paketini karşılayacak DTO Kalıpları
+    // API'den gelen JSON paketini karşılayacak DTO Kalıplarıdır
     public class BanksDashboardDto
     {
         public decimal ZiraatBalance { get; set; }
