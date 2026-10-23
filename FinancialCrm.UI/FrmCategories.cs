@@ -139,6 +139,13 @@ namespace FinancialCrm.UI
         {
 
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            FrmBilling frm = new FrmBilling();
+            frm.Show();
+            this.Hide();
+        }
     }
 
     // Bu sınıf, API'den gelen JSON verisini arayüzde karşılamak için oluşturduğumuz bir kalıptır.

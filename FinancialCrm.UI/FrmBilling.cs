@@ -1,35 +1,66 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace FinancialCrm.UI
 {
     public partial class FrmBilling : Form
     {
+        private readonly string apiUrl = "https://localhost:7126/api/Bills";
         public FrmBilling()
         {
             InitializeComponent();
         }
-
-        private void FrmBilling_Load(object sender, EventArgs e)
+        // Ortak Listeleme Metodu (Kod tekrarını önlemek için)
+        private async Task LoadBillsAsync()
         {
-          
+            using (var client = new HttpClient())
+            {
+                var response = await client.GetAsync(apiUrl);
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonData = await response.Content.ReadAsStringAsync();
+                    var values = JsonConvert.DeserializeObject<List<BillDto>>(jsonData);
+                    dataGridView1.DataSource = values;
+                }
+            }
+        }
+        private async void FrmBilling_Load(object sender, EventArgs e)
+        {
+            await LoadBillsAsync();
         }
 
-        private void btnBillList_Click(object sender, EventArgs e)
+        private async void btnBillList_Click(object sender, EventArgs e)
         {
-           
+            await LoadBillsAsync();
         }
 
-        private void btnCreateBill_Click(object sender, EventArgs e)
+        private async void btnCreateBill_Click(object sender, EventArgs e)
         {
-          
+            var newBill = new BillDto
+            {
+                BillTitle = txtBillTitle.Text,
+                BillAmount = decimal.Parse(txtBillAmount.Text),
+                BillPeriod = txtBillPeriod.Text
+            };
+
+            using (var client = new HttpClient())
+            {
+                var jsonContent = JsonConvert.SerializeObject(newBill);
+                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync(apiUrl, content);
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Ödeme başarılı bir şekilde sisteme eklendi.", "Ödeme & Faturalar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    await LoadBillsAsync();
+                }
+            }
+        
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -37,9 +68,19 @@ namespace FinancialCrm.UI
             Application.Exit();
         }
 
-        private void BtnRemoveBill_Click(object sender, EventArgs e)
+        private async void BtnRemoveBill_Click(object sender, EventArgs e)
         {
-            
+            int id = int.Parse(txtBillId.Text);
+
+            using (var client = new HttpClient())
+            {
+                var response = await client.DeleteAsync($"{apiUrl}/{id}");
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Ödeme başarılı bir şekilde sistemden silindi.", "Ödeme & Faturalar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    await LoadBillsAsync();
+                }
+            }
         }
 
         private void btnUpdateBill_Click(object sender, EventArgs e)
@@ -86,5 +127,12 @@ namespace FinancialCrm.UI
             frm.Show();
             this.Hide();
         }
+    }
+    public class BillDto
+    {
+        public int BillId { get; set; }
+        public string BillTitle { get; set; }
+        public decimal BillAmount { get; set; }
+        public string BillPeriod { get; set; }
     }
 }
