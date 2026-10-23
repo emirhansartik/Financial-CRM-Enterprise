@@ -83,9 +83,29 @@ namespace FinancialCrm.UI
             }
         }
 
-        private void btnUpdateBill_Click(object sender, EventArgs e)
+        private async void btnUpdateBill_Click(object sender, EventArgs e)
         {
-          
+            var updatedBill = new BillDto
+            {
+                BillId = int.Parse(txtBillId.Text),
+                BillTitle = txtBillTitle.Text,
+                BillAmount = decimal.Parse(txtBillAmount.Text),
+                BillPeriod = txtBillPeriod.Text
+            };
+
+            using (var client = new HttpClient())
+            {
+                var jsonContent = JsonConvert.SerializeObject(updatedBill);
+                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+                var response = await client.PutAsync(apiUrl, content);
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Ödeme başarılı bir şekilde güncellendi.", "Ödeme & Faturalar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    await LoadBillsAsync();
+                }
+            }
+        
         }
 
         private void btnBanksForm_Click(object sender, EventArgs e)
