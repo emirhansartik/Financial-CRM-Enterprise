@@ -31,7 +31,7 @@ namespace FinancialCrm.UI
             }
         }
 
-        // 2. Bankaları ComboBox'a Yükleyen Metot
+        // 2. Bankaları combobox'a Yükleyen Metot
         private async Task LoadBanksComboBoxAsync()
         {
             using (var client = new HttpClient())
@@ -83,7 +83,7 @@ namespace FinancialCrm.UI
                 }
             }
         }
-
+        //Silme
         private async void BtnRemoveBankProcess_Click(object sender, EventArgs e)
         {
             int id = int.Parse(txtBankProcessId.Text);
