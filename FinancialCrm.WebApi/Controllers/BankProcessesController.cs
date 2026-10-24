@@ -9,7 +9,7 @@ namespace FinancialCrm.WebApi.Controllers
     [ApiController]
     public class BankProcessesController : ControllerBase
     {
-        // 1. TÜM BANKA HAREKETLERİNİ LİSTELE (GET)
+        // 1. TÜM BANKA HAREKETLERİNİ LİSTELE 
         [HttpGet]
         public IActionResult GetBankProcessList()
         {
@@ -32,7 +32,7 @@ namespace FinancialCrm.WebApi.Controllers
             }
         }
 
-        // 2. COMBOBOX İÇİN BANKALARI GETİR (GET)
+        // 2. COMBOBOX İÇİN BANKALARI GETİR 
         [HttpGet("GetBanks")]
         public IActionResult GetBanksForComboBox()
         {
@@ -50,7 +50,7 @@ namespace FinancialCrm.WebApi.Controllers
             }
         }
 
-        // 3. YENİ BANKA HAREKETİ EKLE (POST)
+        // 3. YENİ BANKA HAREKETİ EKLE 
         [HttpPost]
         public IActionResult CreateBankProcess(BankProcessRequestDto dto)
         {
@@ -71,7 +71,7 @@ namespace FinancialCrm.WebApi.Controllers
             }
         }
 
-        // 4. BANKA HAREKETİ GÜNCELLE (PUT)
+        // 4. BANKA HAREKETİ GÜNCELLE 
         [HttpPut]
         public IActionResult UpdateBankProcess(BankProcessRequestDto dto)
         {
@@ -113,7 +113,7 @@ namespace FinancialCrm.WebApi.Controllers
         }
     }
 
-    // Ekleme ve Güncelleme işlemlerinde Foreign Key hatasını önleyen DTO kalıbı
+    // Ekleme ve Güncelleme işlemlerinde Foreign Key hatasını önleyen DTO Kalıbıdır.
     public class BankProcessRequestDto
     {
         public int BankProcessId { get; set; }
