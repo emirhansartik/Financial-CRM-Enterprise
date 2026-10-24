@@ -94,7 +94,7 @@ namespace FinancialCrm.WebApi.Controllers
             }
         }
 
-        // 5. BANKA HAREKETİ SİL (DELETE)
+        // 5. BANKA HAREKETİ SİLME
         [HttpDelete("{id}")]
         public IActionResult DeleteBankProcess(int id)
         {
