@@ -58,7 +58,7 @@ namespace FinancialCrm.UI
         {
             await LoadBankProcessesAsync();
         }
-
+        // Yeni işlem ekleme
         private async void btnCreateBankProcess_Click(object sender, EventArgs e)
         {
             var newProcess = new

@@ -9,7 +9,7 @@ namespace FinancialCrm.WebApi.Controllers
     [ApiController]
     public class BankProcessesController : ControllerBase
     {
-        // 1. TÜM BANKA HAREKETLERİNİ LİSTELEME
+        // 1. TÜM BANKA HAREKETLERİNİ LİSTELE
         [HttpGet]
         public IActionResult GetBankProcessList()
         {
