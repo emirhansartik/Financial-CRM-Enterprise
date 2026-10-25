@@ -15,6 +15,7 @@ namespace FinancialCrm.UI
 {
     public partial class FrmCategories : Form
     {
+        private readonly string apiUrl = $"{ApiConfig.BaseUrl}/api/Categories";
         public FrmCategories()
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace FinancialCrm.UI
             using (var client = new HttpClient())
             {
                 // 1. API sunucumuza istek atıyoruz
-                var responseMessage = await client.GetAsync("https://localhost:7126/api/Categories");
+                var responseMessage = await client.GetAsync($"{ApiConfig.BaseUrl}/api/Categories");
 
                 if (responseMessage.IsSuccessStatusCode)
                 {
@@ -57,7 +58,7 @@ namespace FinancialCrm.UI
 
             using (var client = new HttpClient())
             {
-                var response = await client.PostAsync("https://localhost:7126/api/Categories", content);
+                var response = await client.PostAsync($"{ApiConfig.BaseUrl}/api/Categories", content);
                 if (response.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Kategori başarıyla eklendi!");
@@ -73,7 +74,7 @@ namespace FinancialCrm.UI
 
             using (var client = new HttpClient())
             {
-                var response = await client.DeleteAsync($"https://localhost:7126/api/Categories/{id}");
+                var response = await client.DeleteAsync($"{ApiConfig.BaseUrl}/api/Categories/{id}");
                 if (response.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Kategori başarıyla silindi!");
@@ -93,7 +94,7 @@ namespace FinancialCrm.UI
 
             using (var client = new HttpClient())
             {
-                var response = await client.PutAsync("https://localhost:7126/api/Categories", content);
+                var response = await client.PutAsync($"{ApiConfig.BaseUrl}/api/Categories", content);
                 if (response.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Kategori başarıyla güncellendi!");

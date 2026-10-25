@@ -41,7 +41,7 @@ namespace FinancialCrm.UI
             using (var client = new HttpClient())
             {
                 //  ÜSTTEKİ 3 KARTIN DOLDURULMASI 
-                var responseStats = await client.GetAsync("https://localhost:7126/api/Statistics");
+                var responseStats = await client.GetAsync($"{ApiConfig.BaseUrl}/api/Statistics");
                 if (responseStats.IsSuccessStatusCode)
                 {
                     var jsonData = await responseStats.Content.ReadAsStringAsync();
@@ -55,7 +55,7 @@ namespace FinancialCrm.UI
                 }
 
                 //  SOLDAKİ SÜTUN GRAFİĞİ 
-                var responseBank = await client.GetAsync("https://localhost:7126/api/Statistics/GetBankData");
+                var responseBank = await client.GetAsync($"{ApiConfig.BaseUrl}/api/Statistics/GetBankData");
                 if (responseBank.IsSuccessStatusCode)
                 {
                     var jsonBank = await responseBank.Content.ReadAsStringAsync();
@@ -69,7 +69,7 @@ namespace FinancialCrm.UI
                 }
 
                 // SAĞDAKİ PASTA GRAFİĞİ
-                var responseBill = await client.GetAsync("https://localhost:7126/api/Statistics/GetBillData");
+                var responseBill = await client.GetAsync($"{ApiConfig.BaseUrl}/api/Statistics/GetBillData");
                 if (responseBill.IsSuccessStatusCode)
                 {
                     var jsonBill = await responseBill.Content.ReadAsStringAsync();

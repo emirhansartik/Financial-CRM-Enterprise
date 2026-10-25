@@ -18,7 +18,7 @@ namespace FinancialCrm.UI
         {
             using (var client = new HttpClient())
             {
-                var response = await client.GetAsync("https://localhost:7126/api/Banks");
+                var response = await client.GetAsync($"{ApiConfig.BaseUrl}/api/Banks");
                 if (response.IsSuccessStatusCode)
                 {
                     var jsonData = await response.Content.ReadAsStringAsync();

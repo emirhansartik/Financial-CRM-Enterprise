@@ -11,7 +11,7 @@ namespace FinancialCrm.UI
 {
     public partial class FrmBankProcess : Form
     {
-        private readonly string apiUrl = "https://localhost:7126/api/BankProcesses";
+        private readonly string apiUrl = $"{ApiConfig.BaseUrl}/api/BankProcesses";
         public FrmBankProcess()
         {
             InitializeComponent();

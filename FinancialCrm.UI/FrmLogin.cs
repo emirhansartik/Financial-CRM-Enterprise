@@ -38,7 +38,7 @@ namespace FinancialCrm.UI
             using (var client = new HttpClient())
             {
                 // AuthController içindeki Login metoduna POST isteği atıyoruz
-                var response = await client.PostAsync("https://localhost:7126/api/Auth/Login", content);
+                var response = await client.PostAsync($"{ApiConfig.BaseUrl}/api/Auth/Login", content);
 
                 if (response.IsSuccessStatusCode)
                 {

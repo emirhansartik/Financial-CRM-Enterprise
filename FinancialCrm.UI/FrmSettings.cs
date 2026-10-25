@@ -10,7 +10,7 @@ namespace FinancialCrm.UI
 {
     public partial class FrmSettings : Form
     {
-        private readonly string apiUrl = "https://localhost:7126/api/Users";
+        private readonly string apiUrl = $"{ApiConfig.BaseUrl}/api/Users";
         public FrmSettings()
         {
             InitializeComponent();
