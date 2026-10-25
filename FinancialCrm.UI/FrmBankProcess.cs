@@ -31,7 +31,7 @@ namespace FinancialCrm.UI
             }
         }
 
-        // 2. Bankaları combobox'a Yükleyen Metot
+        // 2. Bankaları combobox'a Yükleyen Meto
         private async Task LoadBanksComboBoxAsync()
         {
             using (var client = new HttpClient())
